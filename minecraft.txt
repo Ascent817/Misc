@@ -1,0 +1,14 @@
+/give @a minecraft:netherite_boots{
+    Unbreakable:true,
+    Enchantments:
+    [
+        {
+            id:protection,
+            lvl:255
+        },
+        {
+            id:depth_strider,
+            lvl:255
+        }
+    ]
+}
