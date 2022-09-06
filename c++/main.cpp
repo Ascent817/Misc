@@ -1,5 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <tgmath.h>
+#include <iostream>
+using namespace std;
 using namespace sf;
 
 class Vector2D
@@ -94,6 +96,13 @@ class Particle
 {
 public:
     int type;
+    int radius;
+    int bounds;
+
+    int coefficients[8];
+
+    Color color;
+    CircleShape shape;
 
     Vector2D position;
     Vector2D velocity;
@@ -105,6 +114,10 @@ public:
         position = Vector2D(0, 0);
         velocity = Vector2D(0, 0);
         acceleration = Vector2D(0, 0);
+        radius = 10;
+        bounds = 100;
+        color = Color::White;
+        shape = CircleShape(10.f);
     }
 
     Particle(int type, Vector2D position, Vector2D velocity, Vector2D acceleration)
@@ -117,9 +130,21 @@ public:
 
     void update()
     {
+        acceleration = {0, 0};
         velocity += acceleration;
         position += velocity;
-        acceleration = {0, 0};
+        updateShape();
+    }
+
+    void applyForce(Vector2D force)
+    {
+        acceleration = force;
+        velocity += acceleration;
+    }
+
+    void updateShape()
+    {
+        shape.setPosition(position.x, position.y);
     }
 };
 
@@ -127,9 +152,6 @@ int main()
 {
     // Create the main window
     RenderWindow window(VideoMode(), "Particle Life", Style::Fullscreen);
-    CircleShape shape(100.f);
-    shape.setFillColor(Color::Green);
-    shape.setPosition(100, 100);
 
     // Populate the particle array
     Particle particles[1000];
@@ -146,7 +168,12 @@ int main()
         }
 
         window.clear();
-        window.draw(shape);
+        for (int i = 0; i < 1000; i++)
+        {
+            particles[i].update();
+            particles[i].applyForce(Vector2D(0, rand() % 1) * 0.01f);
+            window.draw(particles[i].shape);
+        }
         window.display();
     }
 
