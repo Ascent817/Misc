@@ -99,7 +99,7 @@ const particles = new Array(300).fill(0).map(() => {
 
 setInterval(() => {
     Tick();
-}, 10);
+}, 20);
 
 function Tick() {
     particles.forEach(particle => {
