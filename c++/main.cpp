@@ -1,96 +1,34 @@
 #include <SFML/Graphics.hpp>
 #include <tgmath.h>
 #include <iostream>
+#include <random>
+
 using namespace std;
 using namespace sf;
 
-class Vector2D
+int randomRange(int min, int max) // range : [min, max]
 {
-public:
-    double x, y;
-
-    Vector2D()
+    static bool first = true;
+    if (first)
     {
-        x = 0;
-        y = 0;
+        srand(time(NULL));
+        first = false;
     }
+    return min + rand() % ((max + 1) - min);
+}
 
-    Vector2D(double x, double y)
+Vector2f normalize(Vector2f v)
+{
+    float length = sqrt((v.x * v.x) + (v.y * v.y));
+    if (length != 0)
     {
-        x = x;
-        y = y;
+        return v / length;
     }
-
-    double length() const
+    else
     {
-        return sqrt(x * x + y * y);
+        return v;
     }
-
-    Vector2D normalize() const
-    {
-        double len = length();
-        return Vector2D(x / len, y / len);
-    }
-
-    bool operator==(const Vector2D &other) const
-    {
-        return x == other.x && y == other.y;
-    }
-
-    bool operator!=(const Vector2D &other) const
-    {
-        return !(*this == other);
-    }
-
-    Vector2D operator+(const Vector2D &other) const
-    {
-        return {x + other.x, y + other.y};
-    }
-
-    Vector2D operator-(const Vector2D &other) const
-    {
-        return {x - other.x, y - other.y};
-    }
-
-    Vector2D operator*(double scalar) const
-    {
-        return {x * scalar, y * scalar};
-    }
-
-    Vector2D operator/(double scalar) const
-    {
-        return {x / scalar, y / scalar};
-    }
-
-    Vector2D &operator+=(const Vector2D &other)
-    {
-        x += other.x;
-        y += other.y;
-        return *this;
-    }
-
-    Vector2D &operator-=(const Vector2D &other)
-    {
-        x -= other.x;
-        y -= other.y;
-        return *this;
-    }
-
-    Vector2D &operator*=(double scalar)
-    {
-        x *= scalar;
-        y *= scalar;
-        return *this;
-    }
-
-    Vector2D &operator/=(double scalar)
-    {
-        x /= scalar;
-        y /= scalar;
-        return *this;
-    }
-};
-typedef Vector2D Vector2D;
+}
 
 class Particle
 {
@@ -104,23 +42,23 @@ public:
     Color color;
     CircleShape shape;
 
-    Vector2D position;
-    Vector2D velocity;
-    Vector2D acceleration;
+    Vector2f position;
+    Vector2f velocity;
+    Vector2f acceleration;
 
     Particle()
     {
         type = 0;
-        position = Vector2D(0, 0);
-        velocity = Vector2D(0, 0);
-        acceleration = Vector2D(0, 0);
+        position = Vector2f(randomRange(0, VideoMode::getDesktopMode().width), randomRange(0, VideoMode::getDesktopMode().height));
+        velocity = Vector2f(0, 0);
+        acceleration = Vector2f(0, 0);
         radius = 10;
         bounds = 100;
         color = Color::White;
         shape = CircleShape(10.f);
     }
 
-    Particle(int type, Vector2D position, Vector2D velocity, Vector2D acceleration)
+    Particle(int type, Vector2f position, Vector2f velocity, Vector2f acceleration)
     {
         type = type;
         position = position;
@@ -128,15 +66,17 @@ public:
         acceleration = acceleration;
     }
 
-    void update()
+    void update(Particle particles[100])
     {
         acceleration = {0, 0};
+        velocity = velocity * 0.98f;
         velocity += acceleration;
+        velocity = normalize(velocity);
         position += velocity;
         updateShape();
     }
 
-    void applyForce(Vector2D force)
+    void applyForce(Vector2f force)
     {
         acceleration = force;
         velocity += acceleration;
@@ -154,7 +94,8 @@ int main()
     RenderWindow window(VideoMode(), "Particle Life", Style::Fullscreen);
 
     // Populate the particle array
-    Particle particles[1000];
+    Particle particles[100];
+    const int SIZE_OF_ELEMENT = sizeof(particles[0]);
 
     while (window.isOpen())
     {
@@ -168,10 +109,10 @@ int main()
         }
 
         window.clear();
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < sizeof(particles) / SIZE_OF_ELEMENT; i++)
         {
-            particles[i].update();
-            particles[i].applyForce(Vector2D(0, rand() % 1) * 0.01f);
+            // particles[i].applyForce(Vector2f(0, rand() % 1) * 0.001f);
+            particles[i].update(particles);
             window.draw(particles[i].shape);
         }
         window.display();
