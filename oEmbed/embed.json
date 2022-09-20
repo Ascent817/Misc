@@ -1,12 +1,13 @@
 {
-	"version": "1.0",
-	"type": "photo",
-	"width": 240,
-	"height": 160,
-	"title": "ZB8T0193",
-	"url": "http://farm4.static.flickr.com/3123/2341623661_7c99f48bbf_m.jpg",
-	"author_name": "Bees",
-	"author_url": "http://www.flickr.com/photos/bees/",
-	"provider_name": "Flickr",
-	"provider_url": "http://www.flickr.com/"
+    "html": "<iframe style=\"border-radius: 12px\" width=\"100%\" height=\"152\" title=\"Spotify Embed: Festive Overture\" frameborder=\"0\" allowfullscreen allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\" src=\"https://open.spotify.com/embed/track/6mGBtBDjX349ie8oNLnTM3?utm_source=oembed\"></iframe>",
+    "width": 456,
+    "height": 152,
+    "version": "1.0",
+    "provider_name": "Spotify",
+    "provider_url": "https://spotify.com",
+    "type": "rich",
+    "title": "Festive Overture",
+    "thumbnail_url": "https://i.scdn.co/image/ab67616d00001e029ab94e649aa14767494d024e",
+    "thumbnail_width": 300,
+    "thumbnail_height": 300
 }
