@@ -1,4 +1,4 @@
-// Dictionaries
+//#region Dictionaries
 const basePrefixes = {
   "meth": 1,
   "eth": 2,
@@ -26,9 +26,38 @@ const substituentPrefixes = {
   "deca": 10,
   "undeca": 11,
   "dodeca": 12
-}
+};
 
-const IUPAC = '1,3-methyl-3-cyclohexadiene';
+const endings = ["ane", "ene", "dyene"];
+
+const substituents = {
+  "chloro": "Cl",
+  "bromo": "Br",
+  "fluoro": "F",
+  "iodo": "I",
+  "nitro": "NO2",
+  "nitroso": "NO",
+  "hydroxy": "OH",
+  "amino": "NH2",
+  "amido": "NH",
+  "carbonyl": "CO",
+  "carboxy": "COOH",
+  "phosphono": "PO3H2",
+  "phosphino": "PO2H"
+}
+//#endregion
+
+//#region Classes
+class Substituent {
+  constructor(chainNumber, substituentFormula, hydrocarbonLength = 0) {
+    this.chainNumber = chainNumber;
+    this.substituentFormula = substituentFormula;
+    this.hydrocarbonLength = hydrocarbonLength;
+  }
+}
+//#endregion
+
+const IUPAC = '1,3-methyl-3-cyclopentadiene';
 
 let isRing = false;
 let isAromatic = false;
@@ -43,11 +72,26 @@ if (IUPAC.includes('cyclo')) {
 
 let baseShapeSearchStart;
 
-if (isRing) {
+if (isRing && !isAromatic) {
   baseShapeSearchStart = IUPAC.indexOf('cyclo') + 5;
+  let moleculeSpecs = SolveCyclic();
+  console.log(moleculeSpecs);
+  render = new Path.RegularPolygon(new Point(500, 500), moleculeSpecs.mainRing, 30);
 } else {
   baseShapeSearchStart = IUPAC.lastIndexOf('-') + 1;
 }
 
-render = new Path.RegularPolygon(new Point(500, 500), 90, 30);
 render.strokeColor = 'white';
+
+function SolveCyclic() {
+  let mainRing = 0;
+  Object.keys(basePrefixes).forEach((key) => {
+    if (IUPAC.substring(baseShapeSearchStart, IUPAC.length).startsWith(key)) {
+      mainRing = basePrefixes[key];
+    }
+  });
+  let substituents = [];
+  return {
+    mainRing: mainRing
+  };
+}
