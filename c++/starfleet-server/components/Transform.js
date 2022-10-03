@@ -1,4 +1,5 @@
 import Component from "./Component.js";
+import Vector2 from "../types/Vector2.js";
 
 class Transform extends Component {
     constructor(position, rotation, scale, parent, enabled = true) {
