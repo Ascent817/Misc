@@ -1,0 +1,15 @@
+{
+  "name": "starfleet-server",
+  "version": "1.0.0",
+  "description": "Server for Starfleet",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Ascent817",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^4.5.2"
+  }
+}
