@@ -1,0 +1,14 @@
+{
+  "name": "starfleet-server",
+  "version": "1.0.0",
+  "description": "Server for Starfleet",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ascent817",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^4.5.2"
+  }
+}
