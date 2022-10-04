@@ -15,11 +15,11 @@ class Starfleet extends Phaser.Scene {
         });
         
         this.socket.on("update", (data) => {
-            console.log(data);
+            // console.log(data);
             Object.keys(data.gameObjects).forEach((key) => {
                 if (key in this.gameObjects) {
-                    this.gameObjects[key].x = data.gameObjects[key].x;
-                    this.gameObjects[key].y = data.gameObjects[key].y;
+                    this.gameObjects[key].x = data.gameObjects[key].transform.position.x;
+                    this.gameObjects[key].y = data.gameObjects[key].transform.position.y;
                 } else {
                     this.gameObjects[key] = this.add.image(data.gameObjects[key].x, data.gameObjects[key].y, 'ship');
                 }
