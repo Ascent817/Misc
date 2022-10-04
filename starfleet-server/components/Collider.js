@@ -1,8 +1,8 @@
 import Component from "./Component.js";
 
 class Collider extends Component {
-    constructor(radius, parent, enabled = true) {
-        super(parent, enabled);
+    constructor(radius, enabled = true) {
+        super(enabled);
         this.radius = radius;
     }
 }

@@ -1,8 +1,10 @@
 class GameObject {
-    contructor(id, transform, components) {
+    constructor(id, transform, components) {
         this.id = id;
-        this.components = [];
-        this.components.push(transform, ...components);
+        this.transform = transform;
+        components.forEach((component) => {
+            this[component.constructor.name] = component;
+        });
     }
 }
 

@@ -1,6 +1,5 @@
 class Component {
-    constructor(parent, enabled = true) {
-        this.parent = parent;
+    constructor(enabled = true) {
         this.enabled = enabled;
     }
 }
