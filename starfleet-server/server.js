@@ -12,14 +12,26 @@ let data = {};
 let gameObjects = {};
 
 io.on("connection", (socket) => {
+    console.log(socket.id);
     SetUp(socket.id);
 
-    io.on("disconnect", (reason) => {
-        console.log(reason);
+    socket.on("moveShip", (data) => {
+        data.forEach((element) => {
+            if (element.id.includes(socket.id)) {
+                gameObjects[element.id].transform.position = element.transform.position;
+            } else {
+                // Malformed request, either error or malicious intent
+                socket.disconnect();
+            }
+        });
+    });
+
+    socket.on("disconnect", (reason) => {
+        console.log(`reason: ${reason}`);
         Object.keys(gameObjects).forEach((key) => {
             console.log(key);
             console.log(socket.id);
-            if (key.contains(socket.id)) {
+            if (key.includes(socket.id)) {
                 delete gameObjects[key];
             }
         });
@@ -35,7 +47,7 @@ setInterval(() => {
 function Update(dt) {
     Object.keys(gameObjects).forEach((key) => {
         let gameObject = gameObjects[key];
-        gameObject.transform.position.x += 10;
+        // gameObject.transform.position.x += 1;
     });
     data = {
         dt: dt,
