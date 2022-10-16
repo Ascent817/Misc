@@ -25,13 +25,13 @@ class Particle {
                     let dotProduct = this.velocity.dot(normal);
                     let response = normal * ((this.radius + particle.radius) - distance);
 
-                    
+
                     if (dotProduct > 0) {
                         this.velocity -= normal * dotProduct;
                     }
 
                     particle.representation.position -= response;
-                    
+
                 } else if (distance < this.attractionRadius) {
                     this.AddForce((particle.representation.position - this.representation.position).normalize() * this.attractionCoefficients[particle.type] * 0.01 * (1 - distance / this.attractionRadius));
                 }
