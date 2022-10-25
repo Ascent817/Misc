@@ -1,4 +1,4 @@
-class Particle {
+class PhysicsEntity {
     constructor(position, radius, color, attractionRadius, attractionCoefficients, type) {
         this.velocity = new Point(0, 0);
         this.acceleration = new Point(0, 0);
@@ -14,7 +14,6 @@ class Particle {
     Update(particles) {
         this.acceleration = 0;
         this.velocity *= 0.99;
-        this.velocity.normalize();
         this.representation.position += this.velocity;
         particles.forEach(particle => {
             if (particle != this) {
@@ -54,48 +53,8 @@ class Particle {
 
     AddForce(force) {
         this.acceleration = force;
-        this.velocity += this.acceleration;
     }
 }
-
-const colors = {
-    1: 'white',
-    2: 'red',
-    3: 'blue',
-    4: 'green',
-    5: 'yellow',
-    6: 'orange',
-    7: 'purple',
-    8: 'pink',
-    9: 'brown',
-    10: 'royalblue'
-}
-
-let attractionCoefficients = GetCoefficients(5);
-
-function GetCoefficients(numberOfTypes) {
-    let coefficients = {};
-    for (let i = 1; i <= numberOfTypes; i++) {
-        coefficients[i] = {};
-        for (let j = 1; j <= numberOfTypes; j++) {
-            coefficients[i][j] = Math.random() * 8 - 4;
-        }
-    }
-    console.log(coefficients);
-    return coefficients;
-}
-
-const particles = new Array(100).fill(0).map(() => {
-    let type = Math.floor((Math.random() * 2 + 1));
-    return new Particle(
-        new Point(Math.random() * canvas.width, Math.random() * canvas.height),
-        8,
-        colors[type],
-        100,
-        attractionCoefficients[type],
-        type
-    );
-});
 
 setInterval(() => {
     Tick();
