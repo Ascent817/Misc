@@ -17,15 +17,13 @@ rl.on('line', (line) => {
   input.push(line);
 
   if (input.length === parseInt(input[0]) * 2 + 1) {
-    input = input.filter((block) => {
-      return !parseInt(block);
-    });
+    input = input.filter((block) => !parseInt(block));
     Solve(input);
   }
 });
 
 function Solve(input) {
-  // Loop throught each test case    
+  // Loop throught each test case
   input.forEach((block, caseNumber) => {
     // An array in which each element is a char of the string we are testing for the case
     let strArr = Array.from(block);
