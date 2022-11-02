@@ -3,11 +3,5 @@ body {
     font-size: 14px;
     line-height: 1.42857143;
     margin: 0;
-}
-
-canvas[resize] {
-    display: block;
-    width: 100vw;
-    height: 100vh;
-    background-color: black;
+    overflow: hidden;
 }
