@@ -13,7 +13,9 @@
             "windowsSdkVersion": "10.0.19041.0",
             "compilerPath": "C:/MinGW/bin/gcc.exe",
             "cStandard": "c17",
-            "cppStandard": "c++17"
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
         }
     ],
     "version": 4
