@@ -1,5 +1,6 @@
 g++ -c *.cpp
-g++ *.o -o main -lsfml-graphics -lsfml-window -lsfml-system
+g++ *.o -o main
 rm *.o
 echo "Build complete, running..."
-main.exe
+chmod +x main
+main
