@@ -5,7 +5,7 @@
 struct Term
 {
     float coefficient;
-    float exponent;
+    uint exponent;
 };
 
 class Polynomial
