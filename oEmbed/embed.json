@@ -1,13 +1,13 @@
 {
-    "html": "<iframe style=\"border-radius: 12px\" width=\"100%\" height=\"152\" title=\"Spotify Embed: Festive Overture\" frameborder=\"0\" allowfullscreen allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\" src=\"https://open.spotify.com/embed/track/6mGBtBDjX349ie8oNLnTM3?utm_source=oembed\"></iframe>",
+    "html": "<iframe style=\"border-radius: 12px\" width=\"100%\" height=\"380\" title=\"Spotify Embed: Trans-Siberian Orchestra\" frameborder=\"0\" allowfullscreen allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\" src=\"https://open.spotify.com/embed/artist/5OSQDUNmll299ldFIF1Dau?utm_source=oembed\"></iframe>",
     "width": 456,
-    "height": 152,
+    "height": 380,
     "version": "1.0",
     "provider_name": "Spotify",
     "provider_url": "https://spotify.com",
     "type": "rich",
-    "title": "Festive Overture",
-    "thumbnail_url": "https://i.scdn.co/image/ab67616d00001e029ab94e649aa14767494d024e",
+    "title": "Trans-Siberian Orchestra",
+    "thumbnail_url": "https://i.scdn.co/image/ab6761610000e5eb0b8b465430abcd6d5ef5bf76",
     "thumbnail_width": 300,
     "thumbnail_height": 300
-}
+  }
