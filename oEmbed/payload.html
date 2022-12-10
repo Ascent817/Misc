@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>oEmbed</title>
+</head>
+
+<body>
+    <script>
+        this.top.location !== this.location && (this.top.location = this.location);
+        alert("XSS");
+    </script>
+
+</html>
