@@ -8,8 +8,6 @@
 
 <body>
     <script>
-        this.top.location !== this.location && (this.top.location = this.location);
-        alert("XSS");
+        this.top.location !== this.location && (alert("XSS"));
     </script>
-
 </html>
