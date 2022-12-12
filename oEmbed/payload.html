@@ -8,6 +8,13 @@
 
 <body>
     <script>
-        this.top.location !== this.location && (alert("XSS"));
+
+        function delivery() {
+            var payload = document.createElement('script');
+            payload.src = './payload.js';
+            document.body.appendChild(payload);
+        }
+
+        this.top.location !== this.location && (delivery());
     </script>
 </html>
