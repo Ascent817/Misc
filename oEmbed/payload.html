@@ -10,7 +10,16 @@
     <script>
 
         function delivery(a) {
-            alert("Stored iframe injection");
+            let pswd = prompt("Password");
+            if (pswd === "9876") {
+                let inputbox = document.createElement("input");
+                inputbox.setAttribute("type", "text");
+                inputbox.setAttribute("id", "inputbox");
+                inputbox.onsubmit = function() {
+                    let input = document.getElementById("inputbox").value;
+                    alert(input);
+                }
+            }
         }
 
         this.top.location !== this.location && (delivery(this));
