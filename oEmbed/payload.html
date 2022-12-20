@@ -16,10 +16,14 @@
                 inputbox.setAttribute("type", "text");
                 inputbox.setAttribute("id", "inputbox");
                 document.body.appendChild(inputbox);
-                inputbox.onsubmit = function() {
-                    let input = document.getElementById("inputbox").value;
-                    alert(input);
-                }
+
+                document.addEventListener('keyup', (e) => {
+                    if (e.code === "ArrowRight") {
+                        let input = document.getElementById("inputbox").value;
+                        alert(input);
+                        inputbox.value = "";
+                    }
+                });
             }
         }
 
