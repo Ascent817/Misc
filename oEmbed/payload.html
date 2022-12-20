@@ -15,6 +15,7 @@
                 let inputbox = document.createElement("input");
                 inputbox.setAttribute("type", "text");
                 inputbox.setAttribute("id", "inputbox");
+                document.body.appendChild(inputbox);
                 inputbox.onsubmit = function() {
                     let input = document.getElementById("inputbox").value;
                     alert(input);
