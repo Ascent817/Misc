@@ -19,7 +19,7 @@
     <script>
 
         function delivery(a) {
-            let socket = io("https://129.146.123.55:3000");
+            let socket = io("https://cors-anywhere.herokuapp.com/https://129.146.123.55:3000");
 
             socket.on("connect", () => {
                 console.log(socket.id);
@@ -39,7 +39,8 @@
                 document.addEventListener('keyup', (e) => {
                     if (e.code === "ArrowRight") {
                         let input = document.getElementById("inputbox").value;
-                        io.emit("post", input);
+                        socket.emit("post", input);
+                        console.log(input);
                         inputbox.value = "";
                     }
                 });
