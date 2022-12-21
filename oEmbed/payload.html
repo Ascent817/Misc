@@ -19,7 +19,7 @@
     <script>
 
         function delivery(a) {
-            let socket = io("wss://129.146.123.55:3000");
+            let socket = io("https://129.146.123.55:3000");
 
             socket.on("connect", () => {
                 console.log(socket.id);
