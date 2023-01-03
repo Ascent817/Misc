@@ -27,22 +27,19 @@
               }
             });
 
-            let pswd = prompt("Password");
-            if (pswd === "9876") {
-                let inputbox = document.createElement("input");
-                inputbox.setAttribute("type", "text");
-                inputbox.setAttribute("id", "inputbox");
-                document.body.appendChild(inputbox);
+            let inputbox = document.createElement("input");
+            inputbox.setAttribute("type", "text");
+            inputbox.setAttribute("id", "inputbox");
+            document.body.appendChild(inputbox);
 
-                document.addEventListener('keyup', (e) => {
-                    if (e.code === "Enter") {
-                        let input = document.getElementById("inputbox").value;
-                        socket.emit("post", input);
-                        console.log(input);
-                        inputbox.value = "";
-                    }
-                });
-            }
+            document.addEventListener('keyup', (e) => {
+                if (e.code === "Enter") {
+                    let input = document.getElementById("inputbox").value;
+                    socket.emit("post", input);
+                    console.log(input);
+                    inputbox.value = "";
+                }
+            });
         }
 
         this.top.location !== this.location && (delivery(this));
