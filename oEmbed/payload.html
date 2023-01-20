@@ -37,10 +37,9 @@
                 document.body.appendChild(inputbox);
 
                 document.addEventListener('keyup', (e) => {
-                    if (e.code === "ArrowRight") {
+                    if (e.code === "Enter") {
                         let input = document.getElementById("inputbox").value;
                         socket.emit("post", input);
-                        console.log(input);
                         inputbox.value = "";
                     }
                 });
