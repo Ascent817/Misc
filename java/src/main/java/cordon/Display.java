@@ -27,6 +27,6 @@ class Display extends JFrame {
 
     public static void drawNode(Graphics2D g2, Node node) {
         g2.setColor(Color.white);
-        g2.fillOval(node.position.x.intValue(), node.position.y.intValue(), 10, 10);
+        g2.fillOval((int) node.position.x, (int) node.position.y, 10, 10);
     }
 }

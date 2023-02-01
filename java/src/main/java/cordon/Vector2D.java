@@ -1,17 +1,23 @@
 package cordon;
 
-class Vector2D<T> {
-    public T x;
-    public T y;
+class Vector2D {
+    public double x;
+    public double y;
 
-    public Vector2D(T x, T y) {
-        if (x.getClass() != y.getClass()) {
-            throw new IllegalArgumentException("x and y must be of the same type");
-        } else if (x.getClass() != Integer.class && x.getClass() != Double.class && x.getClass() != Float.class) {
-            throw new IllegalArgumentException("x and y must be of type Integer, Double, or Float");
-        }
-        
+    public Vector2D(double x, double y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Vector2D add(Vector2D other) {
+        return new Vector2D(x + other.x, y + other.y);
+    }
+
+    public Vector2D subtract(Vector2D other) {
+        return new Vector2D(x - other.x, y - other.y);
+    }
+
+    public Vector2D multiply(double scalar) {
+        return new Vector2D(x * scalar, y * scalar);
     }
 }
