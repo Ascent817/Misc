@@ -20,4 +20,8 @@ class Vector2D {
     public Vector2D multiply(double scalar) {
         return new Vector2D(x * scalar, y * scalar);
     }
+
+    public Boolean equals(Vector2D other) {
+        return x == other.x && y == other.y;
+    }
 }

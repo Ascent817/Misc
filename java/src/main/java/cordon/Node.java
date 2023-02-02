@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 class Node {
 
-    ArrayList<Connection> connections;
-    Node parent;
-    Vector2D position;
+    public ArrayList<Node> connections;
+    public Node parent;
+    public Vector2D position;
 
-    double g;
-    double h;
-    double f;
+    public double g;
+    public double h;
+    public double f;
 
     public Node(Vector2D position, Node parent, double g, double h, double f) {
         this.position = position;
@@ -29,7 +29,6 @@ class Node {
     }
 
     public void addConnection(Node node) {
-        this.connections.add(new Connection(this, node));
-        node.connections.add(new Connection(node, this));
+        this.connections.add(node);
     }
 }
