@@ -15,6 +15,7 @@ class GraphGenerator {
                         if (k == 0 && l == 0) {
                             continue;
                         }
+                        
                         Vector2D position = new Vector2D(i + k, j + l);
                         if (nodes.containsKey(position)) {
                             node.addConnection(nodes.get(position));

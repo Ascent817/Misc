@@ -25,7 +25,6 @@ class Particle {
                     let dotProduct = this.velocity.dot(normal);
                     let response = normal * ((this.radius + particle.radius) - distance);
 
-
                     if (dotProduct > 0) {
                         this.velocity -= normal * dotProduct;
                     }
@@ -71,7 +70,7 @@ const colors = {
     10: 'royalblue'
 }
 
-let attractionCoefficients = GetCoefficients(5);
+let attractionCoefficients = GetCoefficients(10);
 
 function GetCoefficients(numberOfTypes) {
     let coefficients = {};
@@ -86,7 +85,7 @@ function GetCoefficients(numberOfTypes) {
 }
 
 const particles = new Array(100).fill(0).map(() => {
-    let type = Math.floor((Math.random() * 2 + 1));
+    let type = Math.floor((Math.random() * 10 + 1));
     return new Particle(
         new Point(Math.random() * canvas.width, Math.random() * canvas.height),
         8,

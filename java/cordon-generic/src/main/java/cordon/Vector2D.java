@@ -21,7 +21,12 @@ class Vector2D {
         return new Vector2D(x * scalar, y * scalar);
     }
 
-    public Boolean equals(Vector2D other) {
-        return x == other.x && y == other.y;
+    public boolean equals(Object other) {
+        Vector2D otherVector = (Vector2D) other;
+        return x == otherVector.x && y == otherVector.y;
+    }
+
+    public String toString() {
+        return "<" + x + ", " + y + ">";
     }
 }
