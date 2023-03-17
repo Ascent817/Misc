@@ -1,0 +1,2 @@
+const data = [98.0, 99.5, 97.2, 110.10, 1000, 14, 98.6, -1, 98.7];
+console.log(Math.round((data.filter((a) => a > 90 && a < 115).reduce((a, b) => a + b, 0) / data.filter((a) => a > 90 && a < 115).length) * 100) / 100);
