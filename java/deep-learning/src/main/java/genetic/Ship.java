@@ -8,23 +8,24 @@ class Ship extends GameObject {
 
     double rotation = 0.0;
 
-    Color shipColor = Color.white;
+    int diameter = 20;
+    Image shipImage;
     
-    public Ship(Vector2D position, Color shipColor) {
+    public Ship(Vector2D position) {
         super(position);
         this.position = position;
-        this.shipColor = shipColor;
+        this.shipImage = Toolkit.getDefaultToolkit().getImage("src/main/resources/ship.png");
+        this.shipImage = shipImage.getScaledInstance(diameter, diameter, 0);
     }
 
     public void update(double dt) {
         velocity = velocity.multiply(0.99);
         velocity = velocity.add(acceleration.multiply(dt));
         position = position.add(velocity.multiply(dt));
-        acceleration = new Vector2D(0, 0);
+        acceleration = new Vector2D(Math.random() * 100 - 50, Math.random() * 100 - 50);
     }
 
     public void display(Graphics2D g2) {
-        g2.setColor(shipColor);
-        g2.fillOval((int) position.x, (int) position.y, 10, 10);
+        g2.drawImage(shipImage, (int) this.position.x - shipImage.getWidth(null) / 2, (int) this.position.y - shipImage.getHeight(null) / 2, null);
     }
 }

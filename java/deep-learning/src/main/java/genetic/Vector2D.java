@@ -26,6 +26,23 @@ class Vector2D {
         return x == otherVector.x && y == otherVector.y;
     }
 
+    public double magnitude() {
+        return Math.sqrt(x * x + y * y);
+    }
+
+    public Vector2D normalize() {
+        double magnitude = magnitude();
+        return new Vector2D(x / magnitude, y / magnitude);
+    }
+
+    public double dot(Vector2D other) {
+        return x * other.x + y * other.y;
+    }
+
+    public double angleBetween(Vector2D other) {
+        return Math.acos(dot(other) / (magnitude() * other.magnitude()));
+    }
+
     public String toString() {
         return "<" + x + ", " + y + ">";
     }
