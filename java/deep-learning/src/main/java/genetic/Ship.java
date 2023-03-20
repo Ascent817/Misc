@@ -12,11 +12,18 @@ class Ship extends GameObject {
     int maxHealth = 5000;
     int health = maxHealth;
 
+    int maxBullets = 8;
+    int bulletsLeft = maxBullets;
+
+    Network AI;
+
     public Ship(Vector2D position) {
         super(position);
         this.position = position;
         this.shipImage = Toolkit.getDefaultToolkit().getImage("src/main/resources/ship.png");
         this.shipImage = shipImage.getScaledInstance(radius * 2, radius * 2, 0);
+        int[] layers = {6, 14, 14, 4};
+        this.AI = new Network(layers);
     }
 
     public void update(double dt) {
@@ -26,11 +33,19 @@ class Ship extends GameObject {
         acceleration = new Vector2D(0, 0);
 
         // DEBUG_ONLY
-        acceleration = new Vector2D(Math.random() * 50 - 25, Math.random() * 50 - 25);
+        addForce(new Vector2D(Math.random() * 50 - 25, Math.random() * 50 - 25));
     }
 
     public void onCollision() {
         health -= 1;
+    }
+
+    public void addForce(Vector2D force) {
+        acceleration = acceleration.add(force);
+    }
+
+    public void Shoot(Vector2D target) {
+        bulletsLeft--;
     }
 
     public void display(Graphics2D g2) {
