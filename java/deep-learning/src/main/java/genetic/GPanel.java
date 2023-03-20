@@ -16,7 +16,7 @@ class GPanel extends JPanel implements ActionListener {
     public GPanel() {
         this.setBackground(new Color(33, 33, 33));
 
-        this.ships = new Ship[10];
+        this.ships = new Ship[125];
 
         for (int i = 0; i < ships.length; i++) {
             ships[i] = new Ship(new Vector2D(this.getWidth() + Math.random() * arenaRadius * 2 - arenaRadius, this.getHeight() + Math.random() * arenaRadius * 2));
@@ -67,9 +67,22 @@ class GPanel extends JPanel implements ActionListener {
             for (int j = 0; j < ships.length; j++) {
                 if (i != j) {
                     Ship otherShip = ships[j];
+                    double distance = ship.position.subtract(otherShip.position).magnitude();
 
+                    if (distance < ship.radius + otherShip.radius) {
+                        ship.onCollision();
 
-                    
+                        Vector2D normal = (ship.position.subtract(otherShip.position)).normalize();
+                        double dotProduct = ship.velocity.dot(normal);
+                        Vector2D response = normal.multiply((ship.radius + otherShip.radius) - distance);
+
+                        if (dotProduct > 0) {
+                            ship.velocity = ship.velocity.subtract(normal.multiply(dotProduct));
+                        }
+
+                        ship.position = ship.position.add(response.multiply(0.5));
+                        otherShip.position = otherShip.position.subtract(response.multiply(0.5));
+                    }
                 }
             }
         }

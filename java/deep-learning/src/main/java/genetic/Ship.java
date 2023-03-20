@@ -6,10 +6,11 @@ class Ship extends GameObject {
     Vector2D velocity = new Vector2D(0, 0);
     Vector2D acceleration = new Vector2D(0, 0);
 
-    double rotation = 0.0;
-
     int radius = 20;
     Image shipImage;
+
+    int maxHealth = 5000;
+    int health = maxHealth;
 
     public Ship(Vector2D position) {
         super(position);
@@ -28,8 +29,16 @@ class Ship extends GameObject {
         acceleration = new Vector2D(Math.random() * 50 - 25, Math.random() * 50 - 25);
     }
 
+    public void onCollision() {
+        health -= 1;
+    }
+
     public void display(Graphics2D g2) {
         g2.drawImage(shipImage, (int) this.position.x - shipImage.getWidth(null) / 2,
                 (int) this.position.y - shipImage.getHeight(null) / 2, null);
+        g2.setColor(Color.white);
+        Vector2D healthBarAnchor = this.position.add(new Vector2D(0, 25));
+        GUtil.drawRect(g2, healthBarAnchor, maxHealth / 100, 10);
+        g2.fillRect((int) healthBarAnchor.x  - maxHealth / 100 / 2, (int) healthBarAnchor.y - 5, health / 100, 10);
     }
 }
