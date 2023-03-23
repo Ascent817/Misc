@@ -33,7 +33,7 @@ class Ship extends GameObject {
         acceleration = new Vector2D(0, 0);
 
         // DEBUG_ONLY
-        addForce(new Vector2D(Math.random() * 50 - 25, Math.random() * 50 - 25));
+        // addForce(new Vector2D(Math.random() * 50 - 25, Math.random() * 50 - 25));
     }
 
     public void onCollision() {

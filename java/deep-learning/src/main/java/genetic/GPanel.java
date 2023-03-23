@@ -16,7 +16,7 @@ class GPanel extends JPanel implements ActionListener {
     public GPanel() {
         this.setBackground(new Color(33, 33, 33));
 
-        this.ships = new Ship[10];
+        this.ships = new Ship[150];
 
         for (int i = 0; i < ships.length; i++) {
             ships[i] = new Ship(new Vector2D(this.getWidth() + Math.random() * arenaRadius * 2 - arenaRadius, this.getHeight() + Math.random() * arenaRadius * 2));
