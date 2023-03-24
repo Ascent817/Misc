@@ -6,7 +6,7 @@ class Ship extends GameObject {
     Vector2D velocity = new Vector2D(0, 0);
     Vector2D acceleration = new Vector2D(0, 0);
 
-    int radius = 20;
+    int radius = 10;
     Image shipImage;
 
     int maxHealth = 5000;
