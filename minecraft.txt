@@ -1,4 +1,4 @@
-/give @a minecraft:netherite_boots{
+/give @a minecraft:netherite_chestplate{
     Unbreakable:true,
     Enchantments:
     [
