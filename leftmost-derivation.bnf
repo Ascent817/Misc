@@ -1,0 +1,22 @@
+<assign> -> <id> = <expr>
+<id> -> A | B | C
+<expr> -> <expr> + <expr>
+        | <expr> * <expr>
+        | (<expr>)
+        | <id>
+
+B = A + C * B
+
+<assign>
+<id> = <expr>
+B = <expr> + <expr>
+B = <id> + <expr> * <expr>
+B = A + <id> * <id>
+B = A + C * B
+
+<assign>
+<id> = <expr>
+B = <expr> * <expr>
+B = <expr> + <expr> * <id>
+B = <id> + <id> * B
+B = A + C * B
