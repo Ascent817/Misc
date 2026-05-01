@@ -1,4 +1,3 @@
-const limit = [4, 4, 3, 4, 2, 4, 1];
 let iter = 0;
 let nums;
 //             n  o  n  o  n  o  n
@@ -14,6 +13,7 @@ function calculate() {
   let startPath = [];
   let used = [];
   iter = 0;
+  document.getElementById('24-result').innerHTML = '';
   perm(startPath, used);
 }
 

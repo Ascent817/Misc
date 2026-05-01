@@ -70,12 +70,12 @@ const colors = {
     10: 'royalblue'
 }
 
-// let attractionCoefficients = GetCoefficients(10);
-let attractionCoefficients = [
-    [-4, 8],
-    [8, -4],
-    [0, 0]
-];
+let attractionCoefficients = GetCoefficients(10);
+// let attractionCoefficients = [
+//     [-4, 8],
+//     [8, -4],
+//     [0, 0]
+// ];
 
 function GetCoefficients(numberOfTypes) {
     let coefficients = {};
@@ -90,8 +90,8 @@ function GetCoefficients(numberOfTypes) {
     return coefficients;
 }
 
-const particles = new Array(100).fill(0).map(() => {
-    let type = Math.floor((Math.random() * 2 + 1));
+const particles = new Array(150).fill(0).map(() => {
+    let type = Math.floor((Math.random() * 5 + 1));
     return new Particle(
         new Point(Math.random() * canvas.width, Math.random() * canvas.height),
         8,
